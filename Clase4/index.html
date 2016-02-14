@@ -1,13 +1,11 @@
 <html ng-app>
 	<head>
-		<title>AngularJS - Clase 3</title>
+		<title>AngularJS - Clase 4</title>
 		<meta charset="UTF8"/>
 		<link type="text/css" rel="stylesheet" 
 			  href="../styles/bootstrap.min.css" />
 		<link type="text/css" rel="stylesheet"
 			  href="../styles/bootstrap-theme.min.css" />
-		<link type="text/css" rel="stylesheet" 
-			  href="../styles/site.css"/>
 		<link type="text/css" rel="stylesheet" 
 			  href="../styles/site.css"/>
 		<link type="text/css" rel="stylesheet" 
@@ -32,39 +30,25 @@
 				</nav>
 				<div class="main-container">
 					<div class="page-header">
-						<h1>Clase 3 - Directivas</h1>
+						<h1>Clase 4 - Introducción al enlace de datos</h1>
 					</div>
-					
-					<p>Las directivas son la herramienta que utilizamos para extender el HTML. Algunos ejemplos de directivas son:</p>
-					<ul>
-						<li>
-							<code>ng-app</code> para inicializar la aplicación. Se coloca en la etiqueta que contiene la aplicación, puede ser html, body o div.
-							<div class="row">
-								<div class="col-sm-6">
-<pre class="language-markup"><code class="language-markup"><xmp><!--Sin identificador del módulo:-->
-<html ng-app>
-	<head>...</head>
-	<body>...</body>
-</html></xmp></code></pre>
-								</div>
-								<div class="col-sm-6">
-<pre class="language-markup"><code class="language-markup"><xmp><!--Con identificador del módulo:-->
-<html ng-app="miAplicacion">
-	<head>...</head>
-	<body>...</body>
-</html></xmp></code></pre>
-								</div>
-							</div>
-						</li>
-						<li>
-							<code>ng-model</code> para declarar una variable en el modelo. Se emplea en las etiquetas input, select y textarea. El valor del elemento del dom y de la variable siempre está sincronizado (bind).
-							<div class="row">
-								<div class="col-sm-6">
-<pre class="language-markup"><code class="language-markup"><xmp><input ng-model="miVariable"/>	</xmp></code></pre>
-								</div>
-							</div>
-						</li>
-					</ul>
+
+					<p>El enlace de datos o data binding consiste en emparejar la vista con el modelo de manera que los cambios en uno de ellos se reflejen inmediatamente en el otro.</p>
+					<p>
+						En el ejemplo a continuación se muestra cómo enlazar un input con una variable javascript del contexto, y cómo mostrarla usando la sintáxis de doble llave.
+					</p>
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 ng-non-bindable">						
+							<pre class="language-markup"><code class="language-markup"><xmp><input type="text" ng-model="nombre"/>
+<span>{{nombre}}</span></xmp></code></pre>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<input type="text" ng-model="nombre"/>
+							<span>{{nombre}}</span>
+						</div>
+					</div>		
+
 					<a class="btn btn-default" href="../index.html" role="button">Volver al índice</a>
 				</div>
 			</div>
