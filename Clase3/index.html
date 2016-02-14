@@ -8,6 +8,10 @@
 			  href="../styles/bootstrap-theme.min.css" />
 		<link type="text/css" rel="stylesheet" 
 			  href="../styles/site.css"/>
+		<link type="text/css" rel="stylesheet" 
+			  href="../styles/site.css"/>
+		<link type="text/css" rel="stylesheet" 
+			  href="../styles/prism.css"/>
 	</head>
 		
 	<body>
@@ -28,10 +32,8 @@
 				</nav>
 				<div class="main-container">
 					<div class="page-header">
-						<h1>Clase 3</h1>
+						<h1>Clase 3 - Directivas</h1>
 					</div>
-
-					<h2>Directivas</h2>
 					
 					<p>Las directivas son la herramienta que utilizamos para extender el HTML. Algunos ejemplos de directivas son:</p>
 					<ul>
@@ -39,22 +41,18 @@
 							<code>ng-app</code> para inicializar la aplicación. Se coloca en la etiqueta que contiene la aplicación, puede ser html, body o div.
 							<div class="row">
 								<div class="col-sm-6">
-									<div>Sin identificador del módulo:</div>
-									<div class="code">
-<xmp><html ng-app>
-  <head>...</head>
-  <body>...</body>
-</html></xmp>
-									</div>
+<pre class="language-markup"><code class="language-markup"><xmp><!--Sin identificador del módulo:-->
+<html ng-app>
+	<head>...</head>
+	<body>...</body>
+</html></xmp></code></pre>
 								</div>
 								<div class="col-sm-6">
-									<div>Con identificador del módulo:</div>
-										<div class="code">
-<xmp><html ng-app="miAplicacion">
-  <head>...</head>
-  <body>...</body>
-</html></xmp>
-										</div>
+<pre class="language-markup"><code class="language-markup"><xmp><!--Con identificador del módulo:-->
+<html ng-app="miAplicacion">
+	<head>...</head>
+	<body>...</body>
+</html></xmp></code></pre>
 								</div>
 							</div>
 						</li>
@@ -62,9 +60,7 @@
 							<code>ng-model</code> para declarar una variable en el modelo. Se emplea en las etiquetas input, select y textarea. El valor del elemento del dom y de la variable siempre está sincronizado (bind).
 							<div class="row">
 								<div class="col-sm-6">
-									<div class="code">
-										<xmp><input ng-model="miVariable"/>	</xmp>
-									</div>
+<pre class="language-markup"><code class="language-markup"><xmp><input ng-model="miVariable"/>	</xmp></code></pre>
 								</div>
 								<div class="col-sm-6">
 									<div>input asociado a miVariable: <input ng-model="miVariable"/>
@@ -73,6 +69,7 @@
 									Valor de miVariable: <span>{{miVariable}}</span>
 									</div>
 								</div>
+							</div>
 						</li>
 					</ul>
 					<a class="btn btn-default" href="../index.html" role="button">Volver al índice</a>
@@ -83,5 +80,6 @@
 		<script type="text/javascript" src="../scripts/jquery.min.js"></script>
 		<script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
 		<script type="text/javascript" src="../scripts/angular.min.js"></script>
+		<script type="text/javascript" src="../scripts/prism.js"></script>
 	</body>
 </html>
