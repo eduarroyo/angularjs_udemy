@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<title>AngularJS - Contador</title>
+		<meta charset="UTF8"/>
+		<link type="text/css" rel="stylesheet" 
+			  href="../styles/bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" 
+			  href="../styles/site.css"/>
+		<link type="text/css" rel="stylesheet" 
+			  href="../styles/prism.css"/>
+	</head>
+		
+	<body ng-app="contadorApp">
+		<div class="container">
+			<div class="page">
+				<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed"
+									data-toggle="collapse" aria-expanded="false"
+									data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">AngularJS - Udemy</a>
+						</div>
+					</div>
+				</nav>
+				<div class="main-container">
+					<div class="page-header">
+						<h1>Ejercicio de la sección 3: contador</h1>
+					</div>
+
+					<p>En este ejercicio se pone en práctica lo aprendido sobre <code>$scope</code> y controladores en AngularJS.</p>
+					<p>En el ejercicio se crea una aplicación web que mantiene información de un contador y permite incrementarlo y decrementarlo.</p>
+
+					<div class="row">
+						<div class="col-md-8 ng-non-bindable">
+						<h3>Código del ejercicio</h3>
+<pre><code class="language-markup"><xmp><body ng-app="contadorApp">
+<!-- ... -->
+<div ng-controller="ContadorController">
+	<span>{{contador}}</span>
+	<button class="btn btn-primary" ng-click="incrementar()">+</button>
+	<button class="btn btn-default" ng-click="decrementar()">-</button>
+</div>
+<!-- ... -->
+</body></xmp></code></pre>
+<pre><code class="language-javascript"><xmp>// Declaración del módulo que se enlaza con el DOM mediante la directiva ng-app
+// en la etiqueta body (puede ser otra etiqueta).
+var contadorApp = angular.module("contadorApp", []);
+
+// Declaración del controlador, que se enlaza con el DOM mediante la directiva
+// ng-controller, aplicado en esta ocasión en una etiqueta DIV, aunque puede
+// usarse en otra superior como body, siempre que la etiqueta donde la
+// aplicamos esté contenida en la que tiene la directiva ng-app.
+contadorApp.controller("ContadorController", function($scope) {
+		// contador es una variable del scope que puede ser enlazada con
+		// ng-model o con dobles llaves.
+		$scope.contador = 0;
+
+		// incrementar y decrementar son funciones del scope, en este caso
+		// se enlazan con los botones mediante la directiva ng-click.
+		$scope.incrementar = function() {
+			$scope.contador += 1;
+		};
+		$scope.decrementar = function() {
+			$scope.contador -= 1;
+		};
+	});
+</xmp></code></pre>
+						</div>
+						<div class="col-md-4">
+						<h3>Resultado del ejercicio</h3>
+							<div ng-controller="ContadorController">
+								<span>{{contador}}</span>
+								<button class="btn btn-primary" ng-click="incrementar()">+</button>
+								<button class="btn btn-default" ng-click="decrementar()">-</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+					<div class="col-xs-12 text-right">
+					<a class="btn btn-default" href="../index.html" role="button">
+						Volver al índice
+					</a>
+					</div></div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../scripts/jquery.min.js"></script>
+		<script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../scripts/angular.min.js"></script>
+		<script type="text/javascript" src="../scripts/prism.js"></script>
+
+		<script type="text/javascript">
+			var contadorApp = angular.module("contadorApp", []);
+			contadorApp.controller("ContadorController", function($scope) {
+					$scope.contador = 0;
+
+					$scope.incrementar = function() {
+						$scope.contador += 1;
+					};
+
+					$scope.decrementar = function() {
+						$scope.contador -= 1;
+					};
+				});
+		</script>
+	</body>
+</html>
