@@ -1,16 +1,13 @@
 var app = angular.module("cursoAngular", ['ngRoute']);
 
-app.directive('ngPrism', [function () {
-    "use strict";
-    return {
-        restrict: 'A',
-        link: function ($scope, element, attrs) {
-            element.ready(function () {
-                Prism.highlightElement(element[0]);
-            });
+app.run(function($rootScope, $location) {
+    $rootScope.$on("$viewContentLoaded", function(event, next, current) {
+        var codeElements = $(".code");
+        for(var i = 0; i < codeElements.length; i++) {
+            Prism.highlightElement(codeElements[i]);
         }
-    };
-}]);
+    });
+});
 
 app.controller("Clase11Controller", function ($scope) {
     "use strict";

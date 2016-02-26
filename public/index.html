@@ -3,14 +3,14 @@
 	<head>
 		<title>Curso de AngularJS - Udemy</title>
 		<meta charset="UTF8"/>
-		<link type="text/css" rel="stylesheet" 
+		<link type="text/css" rel="stylesheet"
 			  href="./styles/bootstrap.min.css" />
 		<link type="text/css" rel="stylesheet"
-			  href="./styles/bootstrap-theme.min.css" />
-		<link type="text/css" rel="stylesheet" 
 			  href="./styles/site.css"/>
+ -		<link type="text/css" rel="stylesheet"
+ -			  href="../styles/prism.css"/>
 	</head>
-		
+
 	<body>
 		<div class="container">
 			<div class="page">
@@ -28,36 +28,9 @@
 					</div>
 				</nav>
 
-				<div class="main-container" ng-view>
+				<div class="main-container" ng-view autoscroll="true">
 				</div>
 			</div>
-
-
-
-			
-<pre><code ngPrism class="language-javascript"><xmp>// Declaración del módulo que se enlaza con el DOM mediante la directiva ng-app
-// en la etiqueta body (puede ser otra etiqueta).
-var contadorApp = angular.module("contadorApp", []);
-
-// Declaración del controlador, que se enlaza con el DOM mediante la directiva
-// ng-controller, aplicado en esta ocasión en una etiqueta DIV, aunque puede
-// usarse en otra superior como body, siempre que la etiqueta donde la
-// aplicamos esté contenida en la que tiene la directiva ng-app.
-contadorApp.controller("ContadorController", function($scope) {
-		// contador es una variable del scope que puede ser enlazada con
-		// ng-model o con dobles llaves.
-		$scope.contador = 0;
-
-		// incrementar y decrementar son funciones del scope, en este caso
-		// se enlazan con los botones mediante la directiva ng-click.
-		$scope.incrementar = function() {
-			$scope.contador += 1;
-		};
-		$scope.decrementar = function() {
-			$scope.contador -= 1;
-		};
-	});
-</xmp></code></pre>
 		</div>
 
 		<script type="text/javascript" src="./scripts/jquery.min.js"></script>
