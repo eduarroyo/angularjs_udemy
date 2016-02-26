@@ -1,0 +1,109 @@
+<div class="page-header">
+	<h1>Sección 4: Filtros</h1>
+</div>
+
+<p>Los filtros se utilizan dentro de las expresiones y permiten modificar el formato o el contenido de los datos devueltos por la expresión.</p>
+<p>Los filtros pueden encadenarse mediante el operador "pipe" <code ng-non-bindable>{{ expresion | filtro1 | filtro2 }}</code>.</p>
+<p>Algunos filtros pueden recibir parámetros como en el caso de <code>{{ 4.2314 | number: 2 }}</code> que establece formato numérico con dos decimales de precisión.</p>
+<p>Los filtros son sensibles a la cultura, por ejemplo en el formato de fecha, separador de decimales, símbolo de moneda... Para establecer la cultura de angularjs hay que incluir el paquete angular-i18n y enlazar el script de la cultura que se desea.</p>
+<p>AngularJS tiene una gran colección de filtros predefinidos como <code>uppercase</code>, <code>number</code>, <code>currency</code>, <code>date</code>... pero también pueden crearse filtros personalizados. Un filtro personalizado se declara con la función <code>filter</code> del módulo, que recibe el identificador y una función que devuelve la función con la lógica del filtro. Dicha función devolverá el valor a mostrar, calculado a partir del objeto original.</p>
+<div class="row">
+    <div class="col-xs-6">
+        <pre><code ng-non-bindable class="code language-javascript"><xmp>// Filtro greaterThan, limita una lista a aquellos elementos
+// cuya propiedad "prop" tenga un valor superior a "val".
+app.filter('greaterThan', function () {
+    // Los parámetros adicionales se pasan desde el marcado
+    // {{ items | filtro:par1:par2...}}
+    return function (items, prop, value) {
+        return items.filter(function(item) {
+            return item[prop] > value;
+        });
+    };
+});</xmp></code></pre>
+    </div>
+    <div class="col-xs-6">
+        <pre><code ng-non-bindable class="code language-javascript"><xmp>// Filtro checkmark, reemplaza valores booleanos por V para
+// true y X para false.
+app.filter('checkmark', function() {
+    return function(input) {
+        return input ? '\u2713' : '\u2718';
+    };
+});</xmp></code></pre>
+    </div>
+</div>
+
+<h3>Ejemplos de filtros</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="col-xs-4">Expresión</th>
+            <th class="col-xs-3">Resultado</th>
+            <th class="col-xs-5">Comentario</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code ng-non-bindable>{{ 'AngularJS' | uppercase }}</code></td>
+            <td>{{ 'AngularJS' | uppercase }}</td>
+            <td>Pueden aplicarse filtros de formato a las expresiones.</td>
+        </tr>
+        <tr>
+            <td><code ng-non-bindable>{{ 987.654321 | number:2 }}</code></td>
+            <td>{{ 987.654321 | number:2 }}</td>
+            <td>Ejemplo de filtro numérico. Establece el nº de decimales. Además aplica la cultura, en este caso es-ES, gracias al script "angular-locale_es-es.js" del módulo angular-i18n.</td>
+        </tr>
+        <tr>
+            <td><code ng-non-bindable>{{ 35.22343 | currency }}</code></td>
+            <td>{{ 35.22343 | currency }}</td>
+            <td>Filtro de moneda. Como el anterior, aplica la cultura. En este caso en nº de posiciones decimales, el separador, el símbolo de moneda y su posición.</td>
+        </tr>
+        <tr>
+            <td><code ng-non-bindable>{{ fecha | date }}</code></td>
+            <td>{{ fecha | date }}</td>
+            <td>Esta expresión utiliza una variable del ámbito del controlador. Al igual que los dos anteriores, aplica la cultura.</td>
+        </tr>
+        <tr>
+            <td><code ng-non-bindable>{{ fecha | date | uppercase }}</code></td>
+            <td>{{ fecha | date | uppercase }}</td>
+            <td>Ejemplo de uso de filtros encadenados.</td>
+        </tr>
+        <tr>
+            <td><code ng-non-bindable>{{ true | checkmark }} - {{ false | checkmark }}</code></td>
+            <td>{{ true | checkmark }}{{ false | checkmark }}</td>
+            <td>Ejemplo del filtro personalizado checkmark definido arriba.</td>
+        </tr>
+        <tr>
+            <td><code ng-non-bindable>{{ ["lunes", "martes", ..., "domingo"] | filter: 'a' }}</code></td>
+            <td>{{ ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"] | filter: 'a' }}</td>
+            <td>Los filtros aplicados a una lista permiten limitar los elementos que se visualizan. En este caso, sólo los que contienen la letra 'a'.</td>
+        </tr>
+        <tr>
+            <td><code ng-non-bindable>{{ [{ nombre: "lunes", orden: 1 }, {nombre: "martes", orden: 2}, ...] | filter: {nombre: 'a'} }}</code></td>
+            <td>{{ [{ nombre: "lunes", orden: 1 }, {nombre: "martes", orden: 2}, {nombre: "miércoles", orden: 3}, {nombre: "jueves", orden: 4}, {nombre: "viernes", orden: 5}, {nombre: "sábado", orden: 6}, {nombre: "domingo", orden: 7}] | filter: { nombre: 'a'} }}</td>
+            <td>Los filtros también se pueden aplicar a listas de objetos, filtrando por alguno de sus campos.</td>
+        </tr>
+        <tr>
+            <td><code ng-non-bindable>{{ [{ nombre: "lunes", orden: 1 }, {nombre: "martes", orden: 2}, ...] | greaterThan:'orden':5 }}</code></td>
+            <td>{{ [{ nombre: "lunes", orden: 1 }, {nombre: "martes", orden: 2}, {nombre: "miércoles", orden: 3}, {nombre: "jueves", orden: 4}, {nombre: "viernes", orden: 5}, {nombre: "sábado", orden: 6}, {nombre: "domingo", orden: 7}] | greaterThan:'orden':5 }}</td>
+            <td>Ejemplo de uso del filtro personalizado para listas greaterThan, definido arriba. En este caso se muestran sólo los objetos de la lista cuya propiedad orden tiene un valor mayor que 5.</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p>Los filtros pueden utilizarse junto con la directiva <code>ng-repeat</code> de la siguiente forma:</p>
+<div class="row">
+    <div class="col-sm-8">
+<pre><code ng-non-bindable class="code language-markup"><xmp><ul>
+    <li ng-repeat="elemento in ['aa', 'ab', 'bc'] | filter: 'a'">
+        {{elemento}}
+    </li>
+</ul></xmp></code></pre></div>
+    <div class="col-sm-4">
+        <ul>
+            <li ng-repeat="elemento in ['aa', 'ab', 'bc'] | filter: 'a'">
+                {{elemento}}
+            </li>
+        </ul>
+    </div>
+</div>
