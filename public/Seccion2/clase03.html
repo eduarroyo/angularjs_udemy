@@ -1,0 +1,45 @@
+<div class="page-header">
+	<h1>Clase 3 - Directivas</h1>
+</div>
+
+<p>Las directivas son la herramienta que utilizamos para extender el HTML.
+ Algunos ejemplos de directivas son:</p>
+<ul>
+	<li>
+		<code>ng-app</code> para inicializar la aplicación. Se coloca en la 
+		etiqueta que contiene la aplicación, puede ser html, body o div.
+		<div class="row">
+			<div class="col-sm-6">
+<pre><code ngPrism class="language-markup"><xmp><!--Sin identificador del módulo:-->
+<html ng-app>
+<head>...</head>
+<body>...</body>
+</html></xmp></code></pre>
+			</div>
+			<div class="col-sm-6">
+<pre><code ngPrism class="language-markup"><xmp><!--Con identificador del módulo:-->
+<html ng-app="miAplicacion">
+<head>...</head>
+<body>...</body>
+</html></xmp></code></pre>
+			</div>
+		</div>
+	</li>
+	<li>
+		<code>ng-model</code> para declarar una variable en el modelo. Se emplea
+		 en las etiquetas input, select y textarea. El valor del elemento del 
+		 dom y de la variable siempre está sincronizado (bind).
+		<div class="row">
+			<div class="col-sm-6">
+<pre class="language-markup"><code class="language-markup"><xmp><input ng-model="miVariable"/></xmp></code></pre>
+			</div>
+		</div>
+	</li>
+</ul>
+<div class="row">
+	<div class="col-xs-12 text-right">
+		<a class="btn btn-default" href="#/" role="button">
+			Volver al índice
+		</a>
+	</div>
+</div>
